@@ -10,10 +10,8 @@ class Solution:
     """
 
     def findErrorNums(self, nums: List[int]) -> List[int]:
-        """
-        方法1: 哈希表法
-        时间复杂度: O(n), 其中 n 是数组的长度。需要遍历两次数组, 每次遍历的时间复杂度是 O(n)。
-        空间复杂度: O(n), 其中 n 是数组的长度。需要创建一个长度为 n+1 的数组。
+        """方法1: 哈希表法
+        时间复杂度: O(n), 空间复杂度: O(n)
         """
         count = [0] * (len(nums) + 1)
         duplicate, missing = None, None
@@ -26,8 +24,27 @@ class Solution:
                 missing = i
         return [duplicate, missing]
 
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        """方法2：位运算
+        优化空间复杂度为O(1)，没太看懂分组异或先不写了
+        """
+        pass
+
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        """方法3：数学方法
+        duplicate = 当前数组元素和 - 去重后的数组元素和
+        missing = 数组1~n的和 - 去重后的数组元素和
+        """
+        n = len(nums)
+        curr_sum = sum(nums)
+        unique_sum = sum(set(nums))
+        origin_sum = n * (n + 1) // 2
+        duplicate = curr_sum - unique_sum
+        missing = origin_sum - unique_sum
+        return [duplicate, missing]
+
 
 if __name__ == "__main__":
-    nums = [1, 1]
+    nums = [2, 2]
     nums = Solution().findErrorNums(nums)
     print(nums)
