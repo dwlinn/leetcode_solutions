@@ -19,20 +19,21 @@ class Solution:
     #             nums[index] = x
     #             nums[index + 1] = x
     #             return self.IsNotDepressList(nums)
-            
+
     def checkPossibility(self, nums: List[int]) -> bool:
         n = len(nums)
         for i in range(n - 1):
-            if nums[i+1] < nums[i]:
-                if i==0 or(i > 0 and nums[i-1] <= nums[i+1]):
-                    nums[i] = nums[i+1]
+            if nums[i + 1] < nums[i]:
+                if i == 0 or (i > 0 and nums[i - 1] <= nums[i + 1]):
+                    nums[i] = nums[i + 1]
                     break
-                elif nums[i-1] > nums[i+1]:
-                    nums[i+1] = nums[i]
+                elif nums[i - 1] > nums[i + 1]:
+                    nums[i + 1] = nums[i]
                     break
-        for i in range(n-1):
-            if nums[i+1] < nums[i]:
+        for i in range(n - 1):
+            if nums[i + 1] < nums[i]:
                 return False
         return True
- 
-print(Solution().checkPossibility([1,4,1,2]))
+
+
+print(Solution().checkPossibility([1, 4, 1, 2]))

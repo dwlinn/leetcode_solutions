@@ -39,20 +39,20 @@ class Solution:
             stack.append(i)
         return result
 
-   def trap(self, height: List[int]) -> int:
+    def trap(self, height: List[int]) -> int:
         # 双指针
         result = 0
-        left ,right = 0, len(height) - 1
+        left, right = 0, len(height) - 1
         leftMax = rightMax = 0
         while left < right:
-                leftMax, rightMax = max(leftMax, height[left]), max(rightMax, height[right])
-                if height[left] < height[right]:
-                    result += leftMax - height[left]
-                    left += 1
-                else:
-                    result += rightMax - height[right]
-                    right -= 1
+            leftMax, rightMax = max(leftMax, height[left]), max(rightMax, height[right])
+            if height[left] < height[right]:
+                result += leftMax - height[left]
+                left += 1
+            else:
+                result += rightMax - height[right]
+                right -= 1
         return result
-       
+
 
 Solution().trap([5, 4, 1, 2])

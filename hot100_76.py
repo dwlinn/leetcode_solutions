@@ -26,7 +26,7 @@ class Solution:
                 if right - left < min_len:
                     min_len = right - left
                     start = left
-                
+
                 char_left = s[left]
                 left += 1
 
